@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Jan Lönnqvist — Marketing & Communications Specialist, Data & AI — DHL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --yellow: #FFCC00;
+  --red: #D40511;
+  --yellow-soft: rgba(255,204,0,0.08);
+  --yellow-mid: rgba(255,204,0,0.20);
+  --red-soft: rgba(212,5,17,0.06);
+  --black: #1A1A1A;
+  --dark: #222222;
+  --surface: #FFFFFF;
+  --bg: #FAFAFA;
+  --text: #333333;
+  --muted: #666666;
+  --light: #999999;
+  --line: #EBEBEB;
+  --sans: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
+body { background:var(--bg); color:var(--text); font-family:var(--sans); overflow-x:hidden; }
+
+/* -- Progress -- */
+#pbar {
+  position:fixed; top:0; left:0; height:3px;
+  background:var(--yellow);
+  z-index:999; width:0; transition:width .15s;
+}
+
+/* -- Nav -- */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:var(--yellow);
+  padding:0 48px; height:56px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.nav-logo img { height:26px; }
+.nav-logo span {
+  font-size:12px; font-weight:500; color:var(--black); opacity:0.6;
+}
+.nav-links { display:flex; gap:24px; align-items:center; }
+.nav-links a {
+  font-size:12px; font-weight:600; color:var(--black);
+  text-decoration:none; opacity:0.7; transition:opacity .2s;
+}
+.nav-links a:hover { opacity:1; }
+.nav-cta {
+  background:var(--red) !important; color:var(--surface) !important;
+  padding:8px 20px !important; border-radius:4px;
+  opacity:1 !important; transition:background .2s !important;
+}
+.nav-cta:hover { background:var(--black) !important; }
+
+/* -- Sections -- */
+section { padding:100px 48px 80px; max-width:1060px; margin:0 auto; }
+
+/* -- Hero -- */
+.hero {
+  min-height:90vh; display:flex; flex-direction:column;
+  justify-content:center; padding-top:120px;
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--yellow); padding:6px 16px;
+  border-radius:4px; font-size:12px; font-weight:700;
+  color:var(--black); margin-bottom:24px; width:fit-content;
+}
+.hero-badge .icon { font-size:14px; }
+.hero h1 {
+  font-size:clamp(38px,5vw,64px); font-weight:800;
+  color:var(--black); line-height:1.08; letter-spacing:-.03em;
+  margin-bottom:18px; max-width:700px;
+}
+.hero h1 .accent { color:var(--red); }
+.hero-sub {
+  font-size:17px; line-height:1.65; color:var(--muted);
+  max-width:520px; margin-bottom:36px;
+}
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.btn-primary {
+  background:var(--red); color:var(--surface);
+  padding:14px 32px; border-radius:4px;
+  font-size:14px; font-weight:700; text-decoration:none;
+  transition:background .2s;
+}
+.btn-primary:hover { background:var(--black); }
+.btn-secondary {
+  background:transparent; color:var(--black);
+  padding:14px 32px; border-radius:4px;
+  font-size:14px; font-weight:700; text-decoration:none;
+  border:2px solid var(--line);
+  transition:border-color .2s;
+}
+.btn-secondary:hover { border-color:var(--black); }
+
+/* -- DHL insider strip -- */
+.insider-strip {
+  background:var(--yellow); padding:32px 48px;
+  max-width:1060px; margin:0 auto;
+  border-radius:8px;
+  display:flex; align-items:flex-start; gap:20px;
+}
+.insider-strip .is-icon {
+  width:48px; height:48px; border-radius:8px;
+  background:var(--red); color:var(--surface);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; font-weight:800; flex-shrink:0;
+}
+.insider-strip h3 {
+  font-size:16px; font-weight:800; color:var(--black); margin-bottom:6px;
+}
+.insider-strip p {
+  font-size:14px; line-height:1.6; color:var(--black); opacity:0.75;
+}
+
+/* -- Project detail -- */
+.project-detail {
+  max-width:1060px; margin:20px auto 0;
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:8px; overflow:hidden;
+}
+.pd-header {
+  padding:20px 32px; border-bottom:1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:baseline;
+}
+.pd-label { font-size:15px; font-weight:800; color:var(--black); }
+.pd-role { font-size:12px; font-weight:600; color:var(--red); }
+.pd-grid {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid var(--line);
+}
+.pd-stat {
+  padding:20px 24px; text-align:center;
+  border-right:1px solid var(--line);
+}
+.pd-stat:last-child { border-right:none; }
+.pd-stat-num {
+  font-size:28px; font-weight:900; color:var(--black); line-height:1;
+}
+.pd-stat-label {
+  font-size:10px; font-weight:600; color:var(--light);
+  text-transform:uppercase; letter-spacing:.06em; margin-top:4px;
+}
+.pd-channels {
+  display:flex; flex-wrap:wrap; gap:6px;
+  padding:16px 32px; border-bottom:1px solid var(--line);
+}
+.pd-channels span {
+  font-size:11px; font-weight:600; padding:4px 12px;
+  border-radius:4px; background:var(--yellow-soft);
+  color:var(--black); border:1px solid var(--yellow-mid);
+}
+.pd-desc {
+  padding:16px 32px 20px; font-size:13px;
+  line-height:1.65; color:var(--muted);
+}
+
+/* -- Section titles -- */
+.stag {
+  font-size:11px; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--red); margin-bottom:10px;
+}
+.sh {
+  font-size:clamp(28px,3.5vw,42px); font-weight:800;
+  color:var(--black); line-height:1.1; letter-spacing:-.02em;
+  margin-bottom:14px;
+}
+.ssub {
+  font-size:15px; color:var(--muted); line-height:1.65;
+  max-width:500px; margin-bottom:44px;
+}
+
+/* -- Experience grid -- */
+.exp-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+  gap:16px;
+}
+.exp-card {
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:10px; padding:28px;
+  transition:border-color .25s, box-shadow .25s;
+}
+.exp-card:hover { border-color:var(--yellow); box-shadow:0 4px 20px rgba(0,0,0,0.04); }
+.exp-card.dhl-card { border-left:4px solid var(--yellow); }
+.exp-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px; }
+.exp-co { font-size:17px; font-weight:800; color:var(--black); }
+.exp-yr { font-size:12px; color:var(--light); font-weight:500; }
+.exp-role { font-size:13px; font-weight:600; color:var(--red); margin-bottom:8px; }
+.exp-desc { font-size:13px; line-height:1.6; color:var(--muted); }
+.exp-tag {
+  display:inline-block; margin-top:8px;
+  font-size:10px; font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase; padding:3px 10px;
+  background:var(--yellow-soft); color:var(--red);
+  border-radius:3px;
+}
+
+/* -- Skills -- */
+.skills-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+  gap:16px;
+}
+.skill-group h4 {
+  font-size:13px; font-weight:700; color:var(--black);
+  margin-bottom:10px; padding-bottom:8px;
+  border-bottom:2px solid var(--yellow);
+}
+.skill-list { display:flex; flex-wrap:wrap; gap:6px; }
+.skill-list span {
+  font-size:12px; padding:5px 12px; border-radius:4px;
+  background:var(--surface); color:var(--text); font-weight:500;
+  border:1px solid var(--line);
+}
+.skill-list span.match {
+  border-color:var(--yellow); background:var(--yellow-soft);
+  color:var(--black); font-weight:600;
+}
+
+/* -- Why cards -- */
+.why-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+  gap:16px;
+}
+.why-card {
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:10px; padding:28px;
+  transition:border-color .25s;
+}
+.why-card:hover { border-color:var(--yellow); }
+.why-num {
+  font-size:36px; font-weight:900; color:var(--yellow);
+  line-height:1; margin-bottom:12px;
+}
+.why-card h4 { font-size:15px; font-weight:700; color:var(--black); margin-bottom:8px; }
+.why-card p { font-size:13px; line-height:1.6; color:var(--muted); }
+
+/* -- Contact -- */
+.contact-block {
+  background:var(--red); border-radius:12px;
+  padding:56px 48px; text-align:center;
+  max-width:1060px; margin:0 auto 80px;
+}
+.contact-block h3 {
+  font-size:clamp(24px,3vw,36px); font-weight:800;
+  color:var(--surface); margin-bottom:8px;
+}
+.contact-block p {
+  font-size:14px; color:rgba(255,255,255,0.65); margin-bottom:28px;
+}
+.contact-links { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
+.cl-btn {
+  padding:12px 28px; border-radius:4px;
+  font-size:13px; font-weight:700; text-decoration:none;
+  transition:opacity .2s;
+}
+.cl-btn.primary { background:var(--yellow); color:var(--black); }
+.cl-btn.secondary { background:rgba(255,255,255,0.12); color:var(--surface); border:1px solid rgba(255,255,255,0.2); }
+.cl-btn:hover { opacity:.85; }
+
+/* -- Footer -- */
+footer {
+  text-align:center; padding:32px 48px;
+  font-size:11px; color:var(--light);
+}
+
+/* -- Fade in -- */
+.fi { opacity:0; transform:translateY(20px); transition:opacity .5s, transform .5s; }
+.fi.vis { opacity:1; transform:translateY(0); }
+
+/* -- Responsive -- */
+@media (max-width:768px) {
+  nav { padding:0 20px; }
+  .nav-links a:not(.nav-cta) { display:none; }
+  section { padding:80px 20px 60px; }
+  .hero { padding-top:100px; min-height:auto; }
+  .insider-strip { flex-direction:column; margin:0 20px; padding:24px; }
+  .project-detail { margin:20px 20px 0; }
+  .pd-grid { grid-template-columns:repeat(2,1fr); }
+  .pd-stat { border-bottom:1px solid var(--line); }
+  .contact-block { padding:40px 24px; margin:0 20px 60px; }
+}
+</style>
+</head>
+<body>
+
+<div id="pbar"></div>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <img src="https://cdn.worldvectorlogo.com/logos/dhl-1.svg" alt="DHL">
+    <span>x Jan Lönnqvist</span>
+  </a>
+  <div class="nav-links">
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#why">Why me</a>
+    <a class="nav-cta" href="https://definitelynotjan.github.io/Portfolio/" target="_blank">Portfolio</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge"><span class="icon">&#9993;</span> Application -- Data & AI Marketing</div>
+  <h1>I already know how <span class="accent">DHL</span> works</h1>
+  <p class="hero-sub">I spent 7 months as a Senior Graphic Designer creating campaigns for DHL across 12+ countries through an agency. Now I want to bring that experience in-house to the Data & AI team.</p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="https://definitelynotjan.github.io/Portfolio/" target="_blank">View portfolio</a>
+    <a class="btn-secondary" href="mailto:jan.lonnqvist@windowslive.com">Get in touch</a>
+  </div>
+</section>
+
+<!-- DHL Project strip -->
+<div class="insider-strip fi">
+  <div class="is-icon">DHL</div>
+  <div>
+    <h3>Not a cold application</h3>
+    <p>I led design and localization on a year-long DHL Supply Chain recruitment campaign across the Netherlands and Belgium. Multi-channel execution across LinkedIn, Instagram, TikTok, Indeed, and search. Social visuals, carousels, website assets, all localized for regional relevance. The campaign hit 20% of its annual lead target in the first month alone. I know the brand system, the approval flows, and the precision DHL requires.</p>
+  </div>
+</div>
+
+<!-- Project detail -->
+<div class="project-detail fi">
+  <div class="pd-header">
+    <div class="pd-label">DHL Supply Chain Campaign</div>
+    <div class="pd-role">Design & Localization Lead</div>
+  </div>
+  <div class="pd-grid">
+    <div class="pd-stat">
+      <div class="pd-stat-num">26</div>
+      <div class="pd-stat-label">Sites across NL & BE</div>
+    </div>
+    <div class="pd-stat">
+      <div class="pd-stat-num">5+</div>
+      <div class="pd-stat-label">Channels</div>
+    </div>
+    <div class="pd-stat">
+      <div class="pd-stat-num">20%</div>
+      <div class="pd-stat-label">Lead target hit in month 1</div>
+    </div>
+    <div class="pd-stat">
+      <div class="pd-stat-num">12mo</div>
+      <div class="pd-stat-label">Campaign duration</div>
+    </div>
+  </div>
+  <div class="pd-channels">
+    <span>LinkedIn</span><span>Instagram</span><span>TikTok</span><span>Indeed</span><span>Search</span><span>Web</span>
+  </div>
+  <p class="pd-desc">Led the full visual execution of a strategic recruitment campaign for DHL Supply Chain. Designed social visuals, carousels, and website assets with localization across regions. Combined macro-level brand awareness with micro-targeted content tailored to specific audiences and locations.</p>
+</div>
+
+<!-- Experience -->
+<section id="experience">
+  <div class="stag fi">Career</div>
+  <h2 class="sh fi">13 years of brand, content, and production</h2>
+  <p class="ssub fi">From global logistics brands to premium retail, every role has built skills directly relevant to marketing communications.</p>
+  <div class="exp-grid">
+    <div class="exp-card dhl-card fi">
+      <div class="exp-head"><span class="exp-co">DHL</span><span class="exp-yr">2024</span></div>
+      <div class="exp-role">Senior Graphic Designer (via agency)</div>
+      <div class="exp-desc">Led design and localization on a year-long DHL Supply Chain recruitment campaign across NL and Belgium. Multi-channel execution: LinkedIn, Instagram, TikTok, Indeed, search, and web. Hit 20% of annual lead target in month one.</div>
+      <span class="exp-tag">Direct DHL experience</span>
+    </div>
+    <div class="exp-card fi">
+      <div class="exp-head"><span class="exp-co">GLS Group</span><span class="exp-yr">2024 -- Present</span></div>
+      <div class="exp-role">Group Graphic Designer</div>
+      <div class="exp-desc">Brand campaigns and design systems across 40+ European countries. Digital, social, e-commerce. AI-integrated production workflows. Managing external agencies and freelancers.</div>
+      <span class="exp-tag">Logistics industry</span>
+    </div>
+    <div class="exp-card fi">
+      <div class="exp-head"><span class="exp-co">Rituals</span><span class="exp-yr">2022 -- 2024</span></div>
+      <div class="exp-role">Visual Specialist</div>
+      <div class="exp-desc">Premium brand visual design. In-store campaign visuals and packaging. Clean, restrained storytelling at scale.</div>
+    </div>
+    <div class="exp-card fi">
+      <div class="exp-head"><span class="exp-co">HelloFresh</span><span class="exp-yr">2022</span></div>
+      <div class="exp-role">Creative / DTP Lead</div>
+      <div class="exp-desc">High-volume production across Benelux and France. Fast iteration, tight deadlines, consistent quality across markets.</div>
+    </div>
+    <div class="exp-card fi">
+      <div class="exp-head"><span class="exp-co">IKEA Group</span><span class="exp-yr">2019 -- 2020</span></div>
+      <div class="exp-role">Graphic Artist</div>
+      <div class="exp-desc">One of the world's most controlled brand systems. Global standards, cross-functional collaboration.</div>
+    </div>
+    <div class="exp-card fi">
+      <div class="exp-head"><span class="exp-co">Valve</span><span class="exp-yr">2019</span></div>
+      <div class="exp-role">Art Director</div>
+      <div class="exp-desc">Art direction, concept development, moodboards, and visual direction across digital and print.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <div class="stag fi">Toolkit</div>
+  <h2 class="sh fi">Skills matched to the role</h2>
+  <p class="ssub fi">Highlighted skills are directly requested in the job description.</p>
+  <div class="skills-grid">
+    <div class="skill-group fi">
+      <h4>Content creation</h4>
+      <div class="skill-list">
+        <span class="match">Visual content</span>
+        <span class="match">Video production</span>
+        <span class="match">Infographics</span>
+        <span class="match">Copywriting</span>
+        <span>Storytelling</span>
+        <span>Photography direction</span>
+      </div>
+    </div>
+    <div class="skill-group fi">
+      <h4>Design tools</h4>
+      <div class="skill-list">
+        <span class="match">Adobe Suite</span>
+        <span class="match">Photoshop</span>
+        <span>Illustrator</span>
+        <span>InDesign</span>
+        <span class="match">After Effects</span>
+        <span>Premiere Pro</span>
+        <span>Figma</span>
+      </div>
+    </div>
+    <div class="skill-group fi">
+      <h4>Marketing & digital</h4>
+      <div class="skill-list">
+        <span class="match">LinkedIn content</span>
+        <span class="match">Social media</span>
+        <span class="match">Campaign design</span>
+        <span class="match">Newsletters</span>
+        <span>Web design</span>
+        <span>HTML/CSS</span>
+      </div>
+    </div>
+    <div class="skill-group fi">
+      <h4>AI & data</h4>
+      <div class="skill-list">
+        <span class="match">AI workflows</span>
+        <span class="match">AI content tools</span>
+        <span>Prompt engineering</span>
+        <span>Automation</span>
+        <span class="match">Data-driven design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why -->
+<section id="why">
+  <div class="stag fi">Fit</div>
+  <h2 class="sh fi">Why me at DHL Data & AI</h2>
+  <p class="ssub fi">Four reasons this is the right match.</p>
+  <div class="why-grid">
+    <div class="why-card fi">
+      <div class="why-num">01</div>
+      <h4>I already know DHL</h4>
+      <p>7 months producing DHL campaigns through an agency. I know the brand guidelines, the visual system, the quality bar. Zero onboarding friction on brand standards.</p>
+    </div>
+    <div class="why-card fi">
+      <div class="why-num">02</div>
+      <h4>Logistics industry native</h4>
+      <p>DHL through agency, GLS as in-house. I understand the industry, the audience, and how to communicate complex logistics products in clear, engaging visuals.</p>
+    </div>
+    <div class="why-card fi">
+      <div class="why-num">03</div>
+      <h4>AI-integrated workflows</h4>
+      <p>I already use AI tools daily at GLS for content creation, campaign iteration, and production acceleration. This is not theoretical for me -- it's my current workflow.</p>
+    </div>
+    <div class="why-card fi">
+      <div class="why-num">04</div>
+      <h4>Content across every channel</h4>
+      <p>From LinkedIn posts and newsletters to video and infographics. 13 years making content that works across digital, social, print, and internal communications.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<div class="contact-block fi">
+  <h3>Ready to come in-house</h3>
+  <p>Jan Lönnqvist -- Marketing & Communications Specialist, Data & AI</p>
+  <div class="contact-links">
+    <a class="cl-btn primary" href="https://definitelynotjan.github.io/Portfolio/" target="_blank">Portfolio</a>
+    <a class="cl-btn secondary" href="mailto:jan.lonnqvist@windowslive.com">Email</a>
+    <a class="cl-btn secondary" href="https://www.linkedin.com/in/jan-lonnqvist" target="_blank">LinkedIn</a>
+    <a class="cl-btn secondary" href="tel:+31619584748">Call</a>
+  </div>
+</div>
+
+<footer>Application by Jan Lönnqvist &middot; 2026</footer>
+
+<script>
+// Progress bar
+const pbar = document.getElementById('pbar');
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  pbar.style.width = (window.scrollY / max * 100) + '%';
+}, {passive:true});
+
+// Fade-in observer
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }});
+}, {threshold:0.12});
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
